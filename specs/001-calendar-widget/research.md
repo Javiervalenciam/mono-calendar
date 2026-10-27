@@ -138,3 +138,28 @@ propio feed cuando exista, y se normaliza todo a UTC interno + render local.
 **Rationale**: cubre los edge cases de DST/TZ de la spec con una sola norma
 (UTC interno, hora local en pantalla).
 **Alternatives**: confiar en offsets fijos (bug clásico con DST).
+
+---
+
+## Amendment A-01 (2026-10-27) — Parser y expansor ICS propios
+
+R-04 y R-05 preveían los crates `ical`/`rrule`. Durante la implementación se
+optó por un **parser y un expansor propios** (`src-tauri/src/ics/parse.rs`,
+`src-tauri/src/ics/expand.rs`) sobre el subset exacto de RFC 5545 que exporta
+Google Calendar: unfold de líneas, VEVENT, TZID resuelto vía `chrono-tz`,
+RRULE `FREQ=DAILY|WEEKLY|MONTHLY` con `INTERVAL`, `UNTIL`, `COUNT` y `BYDAY`
+semanal, `EXDATE` y `RECURRENCE-ID` (overriding de ocurrencias).
+
+**Justificación** (governance, constitución §Governance):
+1. Control total de la **identidad estable de ocurrencias** (`feed:uid:inicio`)
+   que exige el dedupe FR-008 — con `rrule` la generación de identidades por
+   ocurrencia es indireta y frágil.
+2. Superficie acotada y **cubierta por fixtures** (tasks T014/T018): 7 ICS de
+   prueba con asserts de instantes UTC exactos, all-day, EXDATE, TZID y múltiples
+   series.
+3. **Menos peso binario** y menos superficie de dependencias (principio II).
+
+**Riesgo acotado**: si aparece una regla no soportada (p. ej. BYMONTHDAY
+complejo), la serie degrada de forma definida a su ocurrencia master dentro de
+ventana. El crate `rrule` queda documentado aquí como alternativa de migración
+si la superficie crece.
