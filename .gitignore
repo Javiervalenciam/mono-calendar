@@ -1,0 +1,16 @@
+# mono·calendar
+node_modules/
+dist/
+*.log
+.env*
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# Agentes (nombres locales de IDEs)
+.opencode/
+.claude/
+.agents/
+.gemini/
+.hermes/
