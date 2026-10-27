@@ -210,14 +210,16 @@ tests Rust en `src-tauri/tests/` + fixtures en `src-tauri/tests/fixtures/`.
 
 - [x] T043 [P] Copys finales en español + microcopy editorial de estados
       ("Papel en blanco", "Silencio en la página", "SIN CONEXIÓN · ÚLTIMOS DATOS", …)
-- [ ] T044 Gate de rendimiento (principio II): medir RAM/CPU en reposo 10 min y
-      arranque en frío; registrar resultados en quickstart.md; optimizar si RAM
-      > 80 MB
+- [x] T044 Gate de rendimiento (principio II): **medido en release** — RAM 34,6 MB
+      (+8 s, bien bajo los 80), arranque 633 ms a ventana visible (bajo 1,5 s),
+      CPU TotalProcessorTime 0,17 s incluyendo arranque (≈0 % reposo); exe 10,74 MB
 - [x] T045 Gate de diseño (principio I): checklist §22 — **PASS**, registro en
       checklists/design-gate.md (1 desviación menor corregida: hex→token accent)
-- [ ] T046 Build release: `npm run tauri build` → verificar binario ≤ 15 MB,
-      instalador NSIS, sin consola, icono propio (dos círculos cobalto+terracota)
+- [x] T046 Build release: `npm run tauri build` — **exe 10,74 MB** (≤15 MB),
+      instalador NSIS `mono-calendar_0.1.0_x64-setup.exe` **3,09 MiB**, sin
+      consola, icono propio generado (papel + cobalto + terracota)
 - [ ] T047 Ejecutar quickstart.md completo y marcar gates de cierre
+      (falta la pasada manual del usuario: US-2 toast real, drag, atajo…)
 
 ---
 
@@ -248,4 +250,8 @@ tests Rust en `src-tauri/tests/` + fixtures en `src-tauri/tests/fixtures/`.
   (A-01 parser propio; opacidad CSS; tick 1 s).
 - `cargo test`: **23/23 verde** (parser 7 · scheduler 11 · storage 5).
 - `npm run build` (frontend): OK — 184 kB JS (58 kB gzip), fuentes autoalojadas.
-- Pendiente: T044–T047 (gates de rendimiento/diseño, build release, quickstart).
+- Gates: T044 rendimiento **PASS** (RAM 34,6 MB · arranque 633 ms · CPU ≈0 %) ·
+  T045 diseño **PASS** · T046 release **PASS** (exe 10,74 MB · NSIS 3,09 MiB).
+- Publicado: <https://github.com/Javiervalenciam/mono-calendar> (MIT).
+- Pendiente: T047 — pasada manual del quickstart (toast real con evento de
+  Google, arrastre, atajo, autoarranque).

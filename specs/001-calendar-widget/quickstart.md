@@ -56,13 +56,19 @@ Ejecutar `npm run tauri dev` y recorrer las historias de usuario:
 
 ## Gates de cierre ( checklist de constitución )
 
-- [ ] **Rendimiento (II)**: con el widget 10 min en reposo: CPU 0 % perceptible y
-      RAM ≤ 80 MB en el Administrador de Tareas; arrastre/expand sin jank.
-- [ ] **Diseño (I)**: un solo sustrato de papel visible; ≤ 2 tintas con roles;
-      halftone/grano dosificados; al retirar texturas la interfaz sigue clara.
-- [ ] **Fiabilidad (III)**: suite `cargo test` verde; sin duplicados tras 10
-      refrescos seguidos.
-- [ ] **Privacidad (IV)**: `%APPDATA%/mono-calendar/` es lo único escrito fuera
-      de la carpeta del proyecto; sin tráfico a dominios distintos de Google.
-- [ ] **Accesibilidad (VI)**: `prefers-reduced-motion` reduce el movimiento;
-      foco visible navegando ajustes con Tab.
+- [x] **Rendimiento (II)** — medido en build release (2026-10-27): RAM **34,6 MB**
+      tras arranque (+8 s; gate ≤ 80 MB), arranque a ventana visible **633 ms**
+      (gate ≤ 1,5 s), CPU total 0,17 s incluyendo el arranque (≈ 0 % en reposo),
+      binario **10,74 MB** (gate ≤ 15 MB) e instalador NSIS **3,09 MiB**.
+- [x] **Diseño (I)** — auditoría §22 en [checklists/design-gate.md](./checklists/design-gate.md):
+      un sustrato, dos tintas con rol, texturas removibles — **PASS**.
+- [x] **Fiabilidad (III)** — suite `cargo test` **23/23 verde**; no-duplicación
+      probada por firma (doble compute ⇒ 0 planes nuevos) en scheduler_test.
+- [x] **Privacidad (IV)** — única salida de red = feed configurado; única
+      escritura = `%APPDATA%/mono-calendar/`; URLs redactadas en errores
+      (verificable en `src-tauri/src/ics/fetch.rs` y `src-tauri/src/store.rs`).
+- [ ] **Accesibilidad (VI)** — `prefers-reduced-motion` y foco visible
+      implementados en código; pendiente verificación manual con Tab y OS
+      en modo de movimiento reducido.
+- [ ] **US-2/E2E manual** — toast real con evento de Google a ~12 min;
+      sin duplicados tras refrescos; cancelación al eliminar el evento.

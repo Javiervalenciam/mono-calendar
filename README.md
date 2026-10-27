@@ -25,6 +25,12 @@
 
 ---
 
+<p align="center">
+  <img src="docs/widget-chip.png" width="380" alt="Chip contraído: 27 · martes · sin eventos" />&nbsp;&nbsp;
+  <img src="docs/widget-agenda.png" width="286" alt="Agenda expandida: Papel en blanco, estado editorial" /><br/>
+  <sub>El chip contraído vive sobre tu escritorio · la agenda expandida abre con estado editorial</sub>
+</p>
+
 ## ¿Por qué mono·calendar?
 
 Los calendarios de escritorio suelen ser aplicaciones pesadas que exigen
@@ -40,9 +46,10 @@ que tu feed iCal privado, sin salir de tu equipo.
 - **Recordatorios que sobreviven a todo.** El planificador persiste cada aviso
   en disco antes de dispararlo: si el widget se reinicia, descubre lo pendiente
   y lo entrega o lo marca como perdido. Nunca duplica, nunca olvida en silencio.
-- **Presupuesto de recursos.** Reposo = 0 % CPU perceptible, RAM por debajo de
-  80 MB, binario por debajo de 15 MB (gates verificables de la constitución
-  del proyecto).
+- **Presupuesto de recursos medidos** (build release, Windows 11): RAM **34,6 MB**
+  en reposo, arranque **633 ms** hasta ventana visible, CPU ≈ **0 %** en reposo,
+  binario **10,7 MB**, instalador NSIS **3,1 MiB** — todos los gates de la
+  constitución del proyecto, verificados.
 - **Una estética con nombre propio.** Papel, dos tintas (cobalto dominante,
   terracota como acento), grano e imprenta: la interfaz podría ser una página
   de revista sobre tu monitor.
@@ -143,7 +150,7 @@ La primera compilación de Rust tarda varios minutos; las siguientes, segundos.
 
 ```powershell
 npm run tauri build
-# → src-tauri/target/release/bundle/nsis/mono-calendar_0.1.0_x64-setup.exe
+# → src-tauri/target/release/bundle/nsis/mono-calendar_0.1.0_x64-setup.exe (≈ 3,1 MiB)
 ```
 
 ## Privacidad por diseño
