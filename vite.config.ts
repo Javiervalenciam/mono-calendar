@@ -9,6 +9,11 @@ export default defineConfig({
   server: {
     port: 1420,
     strictPort: true,
+    watch: {
+      // El target de Rust (PDB en escritura por cargo) mata el watcher en
+      // Windows con EBUSY — tauri dev ya reconstruye el core por su cuenta.
+      ignored: ["**/src-tauri/**", "**/dist/**", "**/node_modules/**"],
+    },
   },
   build: {
     target: "es2022",
