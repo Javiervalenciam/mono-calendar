@@ -103,7 +103,7 @@ function Check({
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-3.5 w-3.5 accent-[#2148B8]"
+        className="h-3.5 w-3.5 accent-cobalt"
       />
       {label}
     </label>
@@ -339,7 +339,7 @@ export function SettingsPanel({ settings, feeds, onSaved, onReload, onClose }: P
               step={0.05}
               value={settings.opacity}
               onChange={(e) => save({ opacity: Number(e.target.value) })}
-              className="w-full accent-[#2148B8]"
+              className="w-full accent-cobalt"
             />
           </Field>
         </Section>
@@ -367,7 +367,7 @@ export function SettingsPanel({ settings, feeds, onSaved, onReload, onClose }: P
                   onChange={(e) =>
                     save({ urgent_offset_minutes: e.target.checked ? 60 : null })
                   }
-                  className="h-3.5 w-3.5 accent-[#2148B8]"
+                  className="h-3.5 w-3.5 accent-cobalt"
                 />
                 <input
                   type="number"

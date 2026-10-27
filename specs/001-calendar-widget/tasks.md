@@ -213,8 +213,8 @@ tests Rust en `src-tauri/tests/` + fixtures en `src-tauri/tests/fixtures/`.
 - [ ] T044 Gate de rendimiento (principio II): medir RAM/CPU en reposo 10 min y
       arranque en frío; registrar resultados en quickstart.md; optimizar si RAM
       > 80 MB
-- [ ] T045 Gate de diseño (principio I): checklist §22 del DESIGN - MONO FRONTEND
-      sobre el widget real (jerarquía, dosificación, estados, ruptura controlada)
+- [x] T045 Gate de diseño (principio I): checklist §22 — **PASS**, registro en
+      checklists/design-gate.md (1 desviación menor corregida: hex→token accent)
 - [ ] T046 Build release: `npm run tauri build` → verificar binario ≤ 15 MB,
       instalador NSIS, sin consola, icono propio (dos círculos cobalto+terracota)
 - [ ] T047 Ejecutar quickstart.md completo y marcar gates de cierre
